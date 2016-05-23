@@ -19,26 +19,45 @@ Once the project moves into development, the press release can be used as a touc
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
 
+  What to eat?
+
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 
+  Democratic voting applied to food-outings!
+
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  
+  Out with friends and don't know where to eat? Lets vote on it! You and your friends nominate some candidates, people vote, majority wins! Now the blame is spread on everyone!
 
 ## Problem ##
   > Describe the problem your product solves.
 
+  Figuring out where to eat is sometimes a hassle. People have different restrictions, tastes, budgets, moods, opnions, etc. Sometimes one person makes a suggestion, people come along, they feel they are blamed for their suggestion. 
+
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+
+  Your group of friends can now vote on where to eat! With anonymous decision making, individuals can make their suggests without openly admiting it was their idea. So if a bad place is chosen, its the majoritys fault! Shift the blame from one person to many people!
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
 
+  Picked a good place to eat? It was my idea! Picked a bad place to eat?! It was everyone's fault!
+
 ## How to Get Started ##
   > Describe how easy it is to get started.
+
+  Friends all visit a website, start an voting round, set a timer, make a suggestion. When the time is up, vote!
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
+  Fusing politics and food! WOOOOOOO
+
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+
+  After many tries, now you'll know if your suggestions suck or not.
+
