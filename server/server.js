@@ -48,7 +48,9 @@ io.on('connection', (socket) => {
     console.log(data, '<<< suggList');
     count++;
     totalSugg = totalSugg.concat(data);
-
+    if( count === io.sockets.adapter.rooms['poop'].length){
+      io.to('poop').emit('beginVoting', totalSugg);
+    }
   });
 
 

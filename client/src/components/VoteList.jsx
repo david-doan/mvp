@@ -1,7 +1,7 @@
 var VoteList = (props) => (
   <div>
     Voting Time
-    {props.suggs.map( (entry, index) => 
+    {props.candidates.map( (entry, index) => 
       <SuggestionEntry key={index} entry = {entry} />
     )}
   </div>

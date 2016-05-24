@@ -5,18 +5,21 @@ class App extends React.Component {
     this.state = {
       room:1,
       suggList: [],
-      started: false,
+      suggStart: false,
       suggTimer: 10,
       suggLimit: 10,
       serverTime: Infinity,
-      socket: undefined
+      socket: undefined,
+
+      voteStart: false,
+      voteList: []
     };
 
     socket.on('hi', (data) => {console.log(data);});
 
     socket.on('begin', (data) =>{
       console.log(data);
-      this.setState({started: true});
+      this.setState({suggStart: true});
 
       setTimeout( ()=> {
         console.log("It has been '10 setTimeout secs' but really it has been:", (Date.now() - this.state.serverTime)/1000 );
@@ -26,6 +29,15 @@ class App extends React.Component {
 
       }, this.state.suggTimer * 1000);
 
+    });
+
+    socket.on('beginVoting', (data) => {
+      console.log(data, "<<< voteList from server");
+      this.setState({
+        voteStart:true,
+        suggStart:false,
+        voteList:data
+      });
     });
   }
 
@@ -56,11 +68,11 @@ class App extends React.Component {
     socket.emit('start', true);
 
     //render nextPage
-    this.setState({started:true});
+    this.setState({suggStart:true});
   }
 
   render() {
-    if(this.state.started) {
+    if(this.state.suggStart) {
       return (
         <div>
           Hello World Whats up Dog WOOOT
@@ -68,7 +80,13 @@ class App extends React.Component {
           <SuggestionList suggs={this.state.suggList} />
         </div>
       ); 
-    } else {
+    } else if(this.state.voteStart) {
+      return (
+        <div>
+          <VoteList candidates={this.state.voteList} />
+        </div>
+      );
+    }else {
       return (
         <Start handleStartButton={this.handleStartButton.bind(this)} handleRoom={this.handleRoom.bind(this)} joinRoom={this.joinRoom.bind(this)} />
       );
