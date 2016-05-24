@@ -36,6 +36,8 @@ client/node_modules
 .flooignore
 
 #compiled
-client/compiled
+client/compiled/
+client/compiled/src/
+
 
 
