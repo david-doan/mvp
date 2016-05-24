@@ -3,8 +3,9 @@ var requestHandler = (options, callback) => {
   var urlStr = 'http://localhost:8000' + options.endpoint;
   $.ajax({
     url: urlStr,
-    type: 'GET',
+    type: options.method,
     contentType: 'application/json',
+    data: JSON.stringify(options.data),
     success: function (data) {
       console.log('YAY GET REQUEST');
       console.log(data);
