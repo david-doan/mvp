@@ -8,8 +8,37 @@ class App extends React.Component {
       started: false,
       suggTimer: 10,
       suggLimit: 10,
-      serverTime: Infinity
+      serverTime: Infinity,
+      socket: undefined
     };
+
+    socket.on('hi', (data) => {console.log(data);});
+
+    socket.on('begin', (data) =>{
+      console.log(data);
+      this.setState({started: true});
+
+      setTimeout( ()=> {
+        console.log("It has been '10 setTimeout secs' but really it has been:", (Date.now() - this.state.serverTime)/1000 );
+        
+        var suggList = this.state.suggList;
+        socket.emit('endSugg', suggList);
+
+      }, this.state.suggTimer * 1000);
+
+    });
+  }
+
+  handleRoom(e) {
+    var room = e.target.value;
+    socket.emit('roomChange', room);
+    this.setState({room:e.target.value});
+  }
+
+  joinRoom(e) {
+    e.preventDefault();
+    var room = this.state.room;
+    socket.emit('roomChange', room);
   }
 
   // updates App state with suggestion
@@ -24,37 +53,10 @@ class App extends React.Component {
 
   //makes post request to server to start instance of chatting
   handleStartButton(e) {
-    // make request to server to get serverTime
-    var options = {
-      endpoint: '/start',
-      method: 'POST',
-      data: {
-        room:this.state.room
-      }
-    };
-    this.props.requestHandler(options, (data) =>{
-      console.log('WOOT THIS IS THE SERVER TIME', data.data);
-      this.setState({serverTime:data.data});
-    });
+    socket.emit('start', true);
 
     //render nextPage
     this.setState({started:true});
-
-    //creates a timer that will have each client POST to the server
-    setTimeout( ()=> {
-      console.log("It has been '10 setTimeout secs' but really it has been:", (Date.now() - this.state.serverTime)/1000 );
-      var options = {
-        endpoint: '/start',
-        method: 'POST',
-        data: {
-          room:this.state.room
-
-        }
-      };
-      
-      // this.props.requestHandler(options, () => {console.log("HOLY SHIT SUCCESSFUL POST REQUEST");});
-
-    }, this.state.suggTimer * 1000);
   }
 
   render() {
@@ -65,10 +67,10 @@ class App extends React.Component {
           <Nav makeSugg ={this.makeSuggestion.bind(this)}/>
           <SuggestionList suggs={this.state.suggList} />
         </div>
-      );
+      ); 
     } else {
       return (
-        <Start handleStartButton={this.handleStartButton.bind(this)} />
+        <Start handleStartButton={this.handleStartButton.bind(this)} handleRoom={this.handleRoom.bind(this)} joinRoom={this.joinRoom.bind(this)} />
       );
     }
   }

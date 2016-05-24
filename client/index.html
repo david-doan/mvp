@@ -9,8 +9,18 @@
   <script src="node_modules/react/dist/react.js"></script>
   <script src="node_modules/react-dom/dist/react-dom.js"></script>
   <script src="node_modules/lodash/lodash.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
+  <script>
+    var socket = io();
+    socket.on('news', (data) => {
+      console.log("YAY SOCKET IO CONNECTION ESTABLISHED");
+      console.log("data from server>>>", data);
+      socket.emit('other event', {whats:'up server!'});
+    });
+    socket.on('hi', (data) => {console.log(data);});
+  </script>
   <div id="app"></div>
   <script src="compiled/src/util/util.js"></script>
   <script src="compiled/src/components/Start.js"></script>

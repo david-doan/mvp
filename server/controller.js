@@ -3,7 +3,7 @@ var rooms = {};
 module.exports = {
   start: {
     get: function (req, res) {
-      console.log('This is the IP address of req:', req.socket.remoteAddress);
+      // console.log('This is the IP address of req:', req.socket.remoteAddress);
       //respond with time of server
       res.send({
         data: Date.now()
@@ -19,8 +19,8 @@ module.exports = {
       } else {
         rooms[room].push(req.ip);
       }
-      console.log(rooms);
-      console.log(res);
+      // console.log(rooms);
+      // console.log(res);
       res.send({data:'THE POST! ITS WORKING'});
     } // a function which handles posting a message to the database
   }
