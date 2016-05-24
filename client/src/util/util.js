@@ -8,7 +8,7 @@ var requestHandler = (options, callback) => {
     success: function (data) {
       console.log('YAY GET REQUEST');
       console.log(data);
-      callback(data.data);
+      callback(data);
     },
     error: function (data) {
       console.error('FAILED GET REQUEST WHHHY', data);

@@ -4,7 +4,9 @@ class App extends React.Component {
 
     this.state = {
       suggList: [],
-      started: false
+      started: false,
+      suggTimer: 10,
+      serverTime: Infinity
     };
   }
 
@@ -19,11 +21,25 @@ class App extends React.Component {
   //makes post request to server to start instance of chatting
   handleStartButton(e) {
     this.setState({started:true});
-    
-    this.props.requestHandler({endpoint: '/start'}, (time) =>{
-      console.log('WOOT THIS IS THE SERVER TIME', time);
+    var options = {
+      endpoint: '/start',
+      method: 'GET'
+    };
+    this.props.requestHandler(options, (data) =>{
+      console.log('WOOT THIS IS THE SERVER TIME', data.data);
+      this.setState({serverTime:data.data});
     });
 
+    setTimeout( ()=> {
+      console.log("It has been '10 setTimeout secs' but really it has been:", (Date.now() - this.state.serverTime)/1000 );
+      var options = {
+        endpoint: '/start',
+        method: 'POST'
+      };
+      
+      this.props.requestHandler(options, () => {console.log("HOLY SHIT SUCCESSFUL POST REQUEST");});
+
+    },10000);
   }
 
   render() {
