@@ -12,8 +12,6 @@ class SuggestBox extends React.Component {
   }
 
   handleButton(e) {
-    console.log(e, '<<<<event');
-    console.log('BUTTON WORKS: ', this.state.suggestion);
     e.preventDefault();
     this.props.makeSugg(this.state.suggestion);
     this.setState({suggestion:''});

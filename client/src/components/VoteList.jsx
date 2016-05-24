@@ -1,6 +1,6 @@
-var SuggestionList = (props) => (
+var VoteList = (props) => (
   <div>
-    Suggestion List
+    Voting Time
     {props.suggs.map( (entry, index) => 
       <SuggestionEntry key={index} entry = {entry} />
     )}
@@ -9,4 +9,4 @@ var SuggestionList = (props) => (
 
 
 
-window.SuggestionList = SuggestionList;
+window.VoteList = VoteList;

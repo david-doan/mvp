@@ -1,1 +1,1 @@
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<App requestHandler={window.requestHandler}/>, document.getElementById('app'));
