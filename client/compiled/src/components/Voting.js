@@ -1,4 +1,0 @@
-"use strict";
-
-Voting.jsx;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL1ZvdGluZy5qc3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxPQUFPLEdBQVAiLCJmaWxlIjoiVm90aW5nLmpzIiwic291cmNlc0NvbnRlbnQiOlsiVm90aW5nLmpzeCJdfQ==
