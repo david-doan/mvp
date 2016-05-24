@@ -6,13 +6,14 @@ class App extends React.Component {
       room:1,
       suggList: [],
       suggStart: false,
-      suggTimer: 10,
+      suggTimer: 5,
       suggLimit: 10,
       serverTime: Infinity,
       socket: undefined,
 
       voteStart: false,
-      voteList: []
+      voteList: [],
+      voteLimit:1
     };
 
     socket.on('hi', (data) => {console.log(data);});
@@ -71,19 +72,24 @@ class App extends React.Component {
     this.setState({suggStart:true});
   }
 
+  handleVoteClick(e) {
+    console.log(e.target.innerText, "<voted for");
+    window.tester = e.target;
+  }
+
   render() {
     if(this.state.suggStart) {
       return (
         <div>
           Hello World Whats up Dog WOOOT
           <Nav makeSugg ={this.makeSuggestion.bind(this)}/>
-          <SuggestionList suggs={this.state.suggList} />
+          <SuggestionList suggs={this.state.suggList} vote={()=>{}} />
         </div>
       ); 
     } else if(this.state.voteStart) {
       return (
         <div>
-          <VoteList candidates={this.state.voteList} />
+          <VoteList candidates={this.state.voteList} vote={this.handleVoteClick.bind(this)} />
         </div>
       );
     }else {

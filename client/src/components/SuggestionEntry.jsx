@@ -1,5 +1,5 @@
 var SuggestionEntry = (props) => (
-  <div className="">
+  <div className="" onClick={props.vote}>
     {props.entry}
   </div>
 );
